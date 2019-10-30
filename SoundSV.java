@@ -68,7 +68,7 @@ public class SoundSV {
             //poner un try sleep
             //mientras segundosGuardados sea diferentes a
             //if (segundosGuardados != this.w.segundosGuardados) {
-            System.out.println(w.segundosGuardados+" --------------------");
+            //System.out.println(w.segundosGuardados+" --------------------");
             /*if (this.w.segundosGuardados != 4) {
                 this.w.segundosGuardados = 4;
                 System.out.println("-----------------------------------");
