@@ -3,8 +3,8 @@ public class Complex
     private final double real;
     private final double imaginario;
 
-    public Complex(final double re, final double imaginario) {
-        this.real = re;
+    public Complex(final double real, final double imaginario) {
+        this.real = real;
         this.imaginario = imaginario;
     }
 

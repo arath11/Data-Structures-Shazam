@@ -42,17 +42,24 @@ public class SoundSV {
         catch (Exception ex) {
         }
         targetLine.start();
+
+        //readBytes, freq, c(complex), wave
+
         //creamos un buffer gigantge
         buffer = new byte[targetLine.getBufferSize()];
+
         // es lo mismo que el buffer pero en double
         wave = new double[buffer.length / 2];
+
+
         //complejos pero en nullo
         c = new Complex[buffer.length / 2];
+
         //frequencia pero en nulo
         freq = new double[c.length * this.bandwidth / this.sample_rate];
+
         //arreglo nulos
         line = new BufferedImage[(int)this.w.alto];
-
 
         for (int i = 0; i < line.length; ++i) {
             //informacion de la altura=1 y anchura=1366 3 bandas
@@ -90,6 +97,7 @@ public class SoundSV {
             }
 
              */
+
             freq = new double[this.bandwidth * this.sample_size / this.sample_rate];
             final int readBytes = targetLine.read(buffer, 0, targetLine.available());
             wave = convert(wave, buffer, readBytes);
@@ -102,23 +110,16 @@ public class SoundSV {
             }
 
 
-
             //frecuencia pico
-
             this.peak(freq, 1.0, this.bandwidth, "Hz");
             this.w.update();
-/*
             final double[] signal = freq;
             final double amplitude = 1.0;
             final int bandwidth = this.bandwidth;
             final float n = -this.w.alto / 4.0f;
             this.w.getClass();
-
-            //grafica la onda normal
+//            grafica la onda normal
             this.plot(signal, amplitude, bandwidth, "Hz", n + 11.0f + 1.0f, -this.w.alto / 4.0f);
-
-*/
-
         }
     }
 
@@ -136,18 +137,27 @@ public class SoundSV {
         }
 
         if (pmax >= 0.02 * amplitude) {
+
             double s = signal[nmax] * nmax;
             double g = signal[nmax];
+
             for (int j = 1; nmax - j > -1 && nmax + j < signal.length && signal[nmax - j] > 0.1 * signal[nmax] && signal[nmax + j] > 0.1 * signal[nmax]; ++j) {
                 s += signal[nmax - j] * (nmax - j) + signal[nmax + j] * (nmax + j);
                 g += signal[nmax - j] + signal[nmax + j];
             }
+
             pmax = s / g;
 
             int max=(int)(value*pmax/signal.length);
+
+            if(max!=93){
+                System.out.println(max+"                                          A: "+amplitude+"                    PM:      "+pmax);
+            }
+
+
             //signal.lenght 213
 
-            System.out.println(max+"   "+amplitude);
+
 
             w.drawLabel(Color.gray, Integer.toString(max), 0, 0);
         }
@@ -165,6 +175,7 @@ public class SoundSV {
         }
         return r;
     }
+
 
     private static Complex[] fft(final Complex[] x) {
         final int n = x.length;
@@ -219,6 +230,7 @@ public class SoundSV {
     private static double max(final double x, final double y) {
         return (x > y) ? x : y;
     }
+
     private void plot(final double[] signal, final double amplitude, final int value, final String unit, final float offset, final float height) {
         final double x3 = 10.0;
         final float ancho= this.w.ancho;

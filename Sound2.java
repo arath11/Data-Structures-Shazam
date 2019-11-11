@@ -109,7 +109,7 @@ public class Sound2 {
             this.w.getClass();
 
             //grafica la onda normal
-            this.plot(signal, amplitude, bandwidth, "Hz", n + 11.0f + 1.0f, -this.w.alto / 4.0f);
+            this.plot(signal, amplitude, bandwidth,  n + 11.0f + 1.0f, -this.w.alto / 4.0f);
 
 
 
@@ -213,7 +213,7 @@ public class Sound2 {
     private static double max(final double x, final double y) {
         return (x > y) ? x : y;
     }
-    private void plot(final double[] signal, final double amplitude, final int value, final String unit, final float offset, final float height) {
+    private void plot(final double[] signal, final double amplitude, final int value,  final float offset, final float height) {
         final double x3 = 10.0;
         final float ancho= this.w.ancho;
         final int n = 9;

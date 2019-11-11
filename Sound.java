@@ -53,9 +53,9 @@ public class Sound
 
         // es lo mismo que el buffer pero en double
         double[] wave = new double[buffer.length / 2];
-        /*for(int i=0;i<wave.length;i++){
+        for(int i=0;i<wave.length;i++){
             System.out.print(wave[i]+", ");
-        }*/
+        }
         //complejos pero en nullo
         Complex[] c = new Complex[buffer.length / 2];
 
@@ -63,7 +63,7 @@ public class Sound
         double[] freq = new double[c.length * this.bandwidth / this.sample_rate];
         //arreglo nulos
         final BufferedImage[] line = new BufferedImage[(int)this.w.alto];
-     //   int sline = 0;
+        int sline = 0;
 
         for (int i = 0; i < line.length; ++i) {
             //informacion de la altura=1 y anchura=1366 3 bandas
@@ -116,14 +116,14 @@ public class Sound
             for (int j = 1; j < freq.length; ++j) {
                 freq[j] = c[j].abs() / 65536.0 * 2.0 / this.sample_size * this.multiplier;
             }
-            /*if (this.w.adaptive) {
+            if (this.w.adaptive) {
                 this.scale(freq);
-            }*/
-        //    final int t = sline++ % line.length;
+            }
+            final int t = sline++ % line.length;
 
 
             //esta parte hace la onda por ms
-            /*
+
             for (int j = 0; j < freq.length; ++j) {
                 final Graphics g = line[t].getGraphics();
                 g.setColor(getColor(freq[j]));
@@ -134,7 +134,7 @@ public class Sound
             }
 
             this.plot(wave, 65536.0, 1000 * this.sample_size / this.sample_rate, "ms", 0.0f, this.w.alto / 4.0f);
-            */
+
 
 
             final double[] signal = freq;
@@ -219,7 +219,7 @@ public class Sound
             w.drawLine(gray, x4, n4 + 11.0f + height, x1, -this.w.alto / 4.0f + height);
         }
 
-        /*final Window w2 = this.w;
+        final Window w2 = this.w;
         final Color gray2 = Color.GRAY;
         final String string = "Q/A: dt=" + new DecimalFormat("0.00").format(this.sample_size / (float)this.sample_rate).replace(',', '.') + "s";
         final double x5 = -this.w.ancho / 2.0f;
@@ -278,14 +278,14 @@ public class Sound
         w7.drawLabel(gray7, s, x10, n20 - 11.0f);
         final Window w8 = this.w;
         final Color gray8 = Color.GRAY;
-        final String s2 = "Â© Moritz Lehmann";
+        final String s2 = "";
         final float n21 = this.w.ancho / 2.0f;
         final int n22 = 16;
         this.w.getClass();
         final double x11 = n21 - n22 * 7 - 1.0f;
         final float n23 = this.w.alto / 2.0f;
         this.w.getClass();
-        w8.drawLabel(gray8, s2, x11, n23 - 11.0f);*/
+        w8.drawLabel(gray8, s2, x11, n23 - 11.0f);
         for (int i = 0; i < signal.length - 1; ++i) {
             final double x1 = this.w.ancho * i / (signal.length - 1) - this.w.ancho / 2.0f + 1.0f;
             final double x2 = this.w.ancho * (i + 1) / (signal.length - 1) - this.w.ancho / 2.0f + 1.0f;
