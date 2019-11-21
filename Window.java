@@ -27,6 +27,7 @@ public class Window extends JFrame
     private String sfps;
 
 
+
     //protected float opacity;
     protected int segundosGuardados;
     protected int frecuenciaMaxima;
@@ -162,7 +163,8 @@ public class Window extends JFrame
     private static void pause(final double s) {
         if (s > 0.0) {
             try {
-                Thread.sleep((int)(s * 10000.0));
+                //Thread.sleep((int)(s * 10000.0));
+                Thread.sleep((int)(s * 20000.0));
             }
             catch (Exception ex) {}
         }

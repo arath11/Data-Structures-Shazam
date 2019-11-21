@@ -119,7 +119,7 @@ public class SoundSV {
             final float n = -this.w.alto / 4.0f;
             this.w.getClass();
 //            grafica la onda normal
-            this.plot(signal, amplitude, bandwidth, "Hz", n + 11.0f + 1.0f, -this.w.alto / 4.0f);
+         //   this.plot(signal, amplitude, bandwidth, "Hz", n + 11.0f + 1.0f, -this.w.alto / 4.0f);
         }
     }
 

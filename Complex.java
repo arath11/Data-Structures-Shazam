@@ -24,6 +24,9 @@ public class Complex
         return new Complex(this.real * c.real - this.imaginario * c.imaginario, this.real * c.imaginario + this.imaginario * c.real);
     }
     public String toString(){
-        return ("Real: "+real+", Imaginario: "+imaginario);
+        return (real+"\n"+imaginario);
     }
+    /*public String toString(){
+        return ("Real: "+real+", Imaginario: "+imaginario);
+    }*/
 }

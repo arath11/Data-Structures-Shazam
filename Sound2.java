@@ -139,9 +139,9 @@ public class Sound2 {
             pmax = s / g;
 
             int max=(int)(value*pmax/signal.length);
-            //signal.lenght 213
 
-            System.out.println(max+"   "+pmax/1);
+
+            System.out.println(max+"   "+pmax);
 
             w.drawLabel(Color.gray, Integer.toString(max), 0, 0);
         }

@@ -28,14 +28,19 @@ public class Sound
     }
 
     public Sound() {
-        this.sample_rate = 48000;
+        //this.sample_rate = 48000;
+        this.sample_rate = 44100;
         this.sample_size = 8192;
-        this.bandwidth = 5000;
+        this.sample_size = 4096;
+        this.sample_size = 2048;
+        //this.sample_size = 1024;
+        this.bandwidth = 20000;
         this.multiplier = 12;
         //hacemos la nueva ventana
         (this.w = new Window()).setTitle("SoundFFT");
         //formateo del autio
         AudioFormat format = new AudioFormat((float)this.sample_rate, 16, 1, true, false);
+        System.out.println("Sound.java\n"+format.toString());
         //lectura del sonido, creamos una targetDataLine le metemos una dataline
         TargetDataLine targetLine = null;
         try {
@@ -53,9 +58,7 @@ public class Sound
 
         // es lo mismo que el buffer pero en double
         double[] wave = new double[buffer.length / 2];
-        for(int i=0;i<wave.length;i++){
-            System.out.print(wave[i]+", ");
-        }
+
         //complejos pero en nullo
         Complex[] c = new Complex[buffer.length / 2];
 
@@ -74,11 +77,14 @@ public class Sound
         int frecuenciaMaxima = 0;
         //cambiar a un try sleep
 
+        /*
         this.sample_rate = 192000;
         this.sample_size = 2048;
         this.multiplier = 12;
 
         this.bandwidth = 20000;
+
+         */
         System.out.println("Frecuencias; "+bandwidth+"\nSample_rate; "+sample_rate+"\nSample_size; "+sample_size);
         while (true) {
 
