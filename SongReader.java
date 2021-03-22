@@ -7,6 +7,10 @@ public class SongReader {
         conseguirArchivosPrivado(ruta);
     }
 
+    public void conseguirArchivos() {
+        conseguirArchivosPrivado("src/Canciones");
+    }
+
     private void conseguirArchivosPrivado(String ruta) {
         // String [] archivosRegreso=new String[0];
         File rutaArchivo = new File(ruta);
@@ -47,13 +51,15 @@ public class SongReader {
         }
     }
 
-    private void removerNull() {
+    public void removerNull() {
         String[] tmp=new String[canciones.length-1];
         for(int i=1;i<this.canciones.length;i++){
             tmp[i-1]=canciones[i];
         }
         canciones=tmp;
     }
+
+
 
 
     public String[] correr(){
